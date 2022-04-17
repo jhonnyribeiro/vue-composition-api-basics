@@ -21,20 +21,23 @@
 
 <!-- Vue 3.2 -->
 <script setup>
-import {
-  computed,
-  onActivated,
-  onBeforeMount,
-  onBeforeUnmount, onBeforeUpdate,
-  onDeactivated,
-  onMounted,
-  onUnmounted, onUpdated,
-  reactive,
-  watch
-} from "vue";
+/**
+ * Imports
+ */
+import {computed, onMounted, reactive, watch} from "vue";
 
-const appTitle = 'My Counter APP in Vue'
+/**
+ * App Title
+ */
+const appTitle = 'My Counter APP in Vue';
 
+onMounted(() => {
+  console.log('Related to appTitle');
+});
+
+/**
+ * Counter
+ */
 const counterData = reactive({
   count: 0,
   title: 'My Object Counter'
@@ -62,29 +65,8 @@ const decreaseCounter = (amount) => {
   counterData.count = counterData.count - amount;
 };
 
-onBeforeMount(() => {
-  console.log('onBeforeMount')
-});
 onMounted(() => {
-  console.log('onMounted')
-});
-onBeforeUnmount(() => {
-  console.log('onBeforeUnmount')
-});
-onUnmounted(() => {
-  console.log('onUnmounted')
-});
-onActivated(() => {
-  console.log('onActivated')
-});
-onDeactivated(() => {
-  console.log('onDeactivated')
-});
-onBeforeUpdate(() => {
-  console.log('onBeforeUpdate');
-});
-onUpdated(() => {
-  console.log('onUpdated');
+  console.log('Related to counter');
 });
 </script>
 
