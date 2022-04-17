@@ -25,10 +25,10 @@ import {
   computed,
   onActivated,
   onBeforeMount,
-  onBeforeUnmount,
+  onBeforeUnmount, onBeforeUpdate,
   onDeactivated,
   onMounted,
-  onUnmounted,
+  onUnmounted, onUpdated,
   reactive,
   watch
 } from "vue";
@@ -79,6 +79,12 @@ onActivated(() => {
 });
 onDeactivated(() => {
   console.log('onDeactivated')
+});
+onBeforeUpdate(() => {
+  console.log('onBeforeUpdate');
+});
+onUpdated(() => {
+  console.log('onUpdated');
 });
 </script>
 
