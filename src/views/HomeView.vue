@@ -21,7 +21,17 @@
 
 <!-- Vue 3.2 -->
 <script setup>
-import {computed, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, reactive, watch} from "vue";
+import {
+  computed,
+  onActivated,
+  onBeforeMount,
+  onBeforeUnmount,
+  onDeactivated,
+  onMounted,
+  onUnmounted,
+  reactive,
+  watch
+} from "vue";
 
 const appTitle = 'My Counter APP in Vue'
 
@@ -63,7 +73,13 @@ onBeforeUnmount(() => {
 });
 onUnmounted(() => {
   console.log('onUnmounted')
-})
+});
+onActivated(() => {
+  console.log('onActivated')
+});
+onDeactivated(() => {
+  console.log('onDeactivated')
+});
 </script>
 
 <style>
