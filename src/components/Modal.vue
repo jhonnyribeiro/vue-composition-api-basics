@@ -4,7 +4,7 @@
       <h1>{{ title }} </h1>
       <slot></slot>
       <button @click="$emit('hideModal')">Hide modal</button>
-      <button @click="handleButtonClick">Hide modal</button>
+      <button @click="$emit('update:modelValue', false)">Hide modal</button>
       <!--      <pre>{{ $slots.title() }}</pre>-->
     </div>
   </teleport>
@@ -37,15 +37,16 @@ console.log(props.title)
  * Emits
  */
 
-const emit = defineEmits(['hideModal']);
+const emit = defineEmits(['update:modelValue', 'hideModal']);
 
 /**
  * emit event on click
  */
 
-const handleButtonClick = () => {
-  emit('hideModal');
-};
+// const handleButtonClick = () => {
+//   emit('update:modelValue', false);
+//   // emit('hideModal');
+// };
 </script>
 
 
