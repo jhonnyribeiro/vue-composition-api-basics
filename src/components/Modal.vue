@@ -1,20 +1,23 @@
 <template>
   <teleport to="body">
     <div class="modal">
-      <h1>This is a modal</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus, enim est eum excepturi explicabo
-        harum, ipsam iste iusto laudantium modi officia perspiciatis quae rem repudiandae vel velit voluptate.
-        Dolorem!</p>
+      <h1>
+        <slot name="title"></slot>
+      </h1>
+      <slot></slot>
       <button>Hide modal</button>
+      <!--      <pre>{{ $slots.title() }}</pre>-->
     </div>
   </teleport>
 </template>
 
 
-<script>
-export default {
-  name: "Modal"
-}
+<script setup>
+import {useSlots} from "vue";
+
+const slots = useSlots();
+
+console.log(slots.title())
 </script>
 
 
