@@ -6,6 +6,15 @@ export const useCounterStore = defineStore({
         count: 0,
         title: 'My counter pinia',
     }),
+    getters: {
+        oddOrEven: (state) => {
+            if (state.count % 2 === 0) {
+                return 'even';
+            }
+            
+            return 'odd';
+        }
+    },
     actions: {
         increaseCounter(amount) {
             this.count += amount
@@ -13,6 +22,6 @@ export const useCounterStore = defineStore({
         decreaseCounter(amount) {
             this.count -= amount
         },
-    }
+    },
 })
 
