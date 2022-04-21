@@ -24,8 +24,9 @@
 /**
  * Imports
  */
-import {computed, nextTick, onMounted, reactive, ref, watch} from "vue";
+import {onMounted, ref} from "vue";
 import {vAutofocus} from "../directives/vAutofocus";
+import {useCounter} from "../use/useCounter";
 
 /**
  * App Title
@@ -42,7 +43,7 @@ onMounted(() => {
 /**
  * Counter
  */
-
+const {counterData, oddOrEven, increaseCounter, decreaseCounter,} = useCounter();
 
 </script>
 
