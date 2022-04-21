@@ -8,7 +8,7 @@
     <RouterLink to="/posts">Posts</RouterLink>
   </nav>
 
-  <RouterView :userData="userData"/>
+  <RouterView/>
 
   <!--  <router-view v-slot="{ Component }">-->
   <!--    <keep-alive>-->
@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import {reactive} from "vue";
+import {provide, reactive} from "vue";
 
 /**
  * User data
@@ -27,6 +27,8 @@ const userData = reactive({
   name: 'Jhonny',
   userName: 'jhonny.ribeiro'
 });
+
+provide('userData', userData);
 
 </script>
 

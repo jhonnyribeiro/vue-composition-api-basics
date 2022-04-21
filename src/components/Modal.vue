@@ -5,15 +5,15 @@
       <slot></slot>
       <button @click="$emit('hideModal')">Hide modal</button>
       <button @click="$emit('update:modelValue', false)">Hide modal</button>
+      <div>Username is: {{ userData.userName }}</div>
       <!--      <pre>{{ $slots.title() }}</pre>-->
-      <div>Username: {{ userData.userName }}</div>
     </div>
   </teleport>
 </template>
 
 
 <script setup>
-import {useSlots} from "vue";
+import {inject, useSlots} from "vue";
 
 const slots = useSlots();
 
@@ -30,9 +30,6 @@ const props = defineProps({
   title: {
     type: String,
     default: 'No title specified'
-  },
-  userData: {
-    type: Object
   },
 });
 console.log(props.title)
@@ -51,6 +48,12 @@ const emit = defineEmits(['update:modelValue', 'hideModal']);
 //   emit('update:modelValue', false);
 //   // emit('hideModal');
 // };
+
+/**
+ *  Inject user data
+ */
+const userData = inject('userData');
+
 </script>
 
 
