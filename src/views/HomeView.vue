@@ -1,20 +1,20 @@
 <template>
   <div class="home">
     <h2 ref="appTitleRef">{{ appTitle }}</h2>
-    <h3>Hard-code title:</h3>
+    <h3>{{ counter.title }}</h3>
     <div>
-      <button class="btn">--</button>
-      <button class="btn">-</button>
-      <span class="counter">32</span>
-      <button class="btn">+</button>
-      <button class="btn">++</button>
+      <button @click="counter.decreaseCounter(2)" class="btn">--</button>
+      <button @click="counter.decreaseCounter(1)" class="btn">-</button>
+      <span class="counter">{{ counter.count }}</span>
+      <button @click="counter.increaseCounter(1)" class="btn">+</button>
+      <button @click="counter.increaseCounter(2)" class="btn">++</button>
     </div>
 
     <p>This counter is odd/even</p>
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input type="text" v-autofocus>
+      <input v-model="counter.title" type="text" v-autofocus>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@
  */
 import {onMounted, ref} from "vue";
 import {vAutofocus} from "../directives/vAutofocus";
+import {useCounterStore} from "../stores/counter";
 
 /**
  * App Title
@@ -38,6 +39,11 @@ onMounted(() => {
   console.log('Related to appTitle');
   console.log(`The app title is ${appTitleRef.value.offsetWidth} px wide! `);
 });
+
+/**
+ * Counter pinia
+ */
+const counter = useCounterStore();
 </script>
 
 <style>
