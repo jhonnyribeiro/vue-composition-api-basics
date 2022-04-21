@@ -1,11 +1,14 @@
 <template>
+  <div class="user-data">
+    {{ userData.name }} @{{ userData.userName }}
+  </div>
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/modals">Modals</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
   </nav>
 
-  <RouterView/>
+  <RouterView :userData="userData"/>
 
   <!--  <router-view v-slot="{ Component }">-->
   <!--    <keep-alive>-->
@@ -13,6 +16,19 @@
   <!--    </keep-alive>-->
   <!--  </router-view>-->
 </template>
+
+<script setup>
+import {reactive} from "vue";
+
+/**
+ * User data
+ */
+const userData = reactive({
+  name: 'Jhonny',
+  userName: 'jhonny.ribeiro'
+});
+
+</script>
 
 <style>
 @import '@/assets/base.css';
@@ -71,5 +87,14 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.user-data {
+  position: absolute;
+  background: #333;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  padding: 5px;
 }
 </style>
